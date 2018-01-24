@@ -1,5 +1,24 @@
 # Build a Rails App
 
+
+## Overview Testing Management App
+The system has Users who can create Test Cases. Test Case belongs to a User, User has many test cases. Test case has many test steps, test steps has many test cases.
+Join tabel testcase_teststeps. User has many steps through test cases. 
+
+Nested form, user can create a new test step through new test case page. 
+
+Scope, most productive user who create the most test cases (> 10)
+
+
+
+Model: 
+User: name, password  cannot be null
+Test Case: title minimum length 8
+Test Step: description 
+
+
+
+
 ## Overview
 
 In this lesson you're going to build a complete Ruby on Rails application that manages related data through complex forms and RESTful routes. The goal of the application is to build a Content Management System, whether the content being managed is Blog Posts, Recipes, a Library of Resources, or any domain model that lends itself to these requirements (the majority of ideas you could come up with would probably meet the requirements).
