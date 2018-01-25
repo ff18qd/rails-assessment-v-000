@@ -1,5 +1,12 @@
-<h2>Welcome Back <%= @user.name%></h2>
+<h2>Welcome Back Tester <%= @user.name%></h2>
 
+<%#= list all the test cases that user created %>
+<% if @user.test_cases %>
+    <% @user.test_cases.each do |tc| %>
+        <li><%= link_to "#{tc.title}", test_case_path(tc)%></li>
+    <% end %>
+
+<% end %>
 
 
 

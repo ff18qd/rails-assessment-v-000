@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   
   resources :users
   
+  resources :test_cases, only: [:show, :edit, :update, :destroy]
+  
   
   
   # The priority is based upon order of creation: first created -> highest priority.
