@@ -1,0 +1,10 @@
+<h2>Welcome Back <%= @user.name%></h2>
+
+
+
+
+
+
+<% if session[:user_id] %>
+    <li> <%= link_to "Sign out", user_path, :method => :delete %></li>
+<% end %>

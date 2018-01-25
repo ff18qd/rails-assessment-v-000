@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
-  # get 'welcome/hello'
-  
-   root 'welcome#home'
-  # get '/signup' => 'users#new'
-  # get '/login' => 'sessions#new'
-  # post '/login' => 'sessions#create'
 
-  # resources :users
+
+  get 'test_step/index'
+
+   root 'welcome#home'
+  
+  get '/signup' => 'users#new'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/auth/facebook/callback' => 'sessions#create'
+  
+  resources :users
   
   
   
