@@ -3,7 +3,7 @@
 <%#= list all the test cases that user created %>
 <% if @user.test_cases %>
     <% @user.test_cases.each do |tc| %>
-        <li><%= link_to "#{tc.title}", test_case_path(tc)%></li>
+        <li>Test Case: <%= link_to "#{tc.title}", test_case_path(tc)%></li>
     <% end %>
 
 <% end %>
@@ -13,5 +13,7 @@
 
 
 <% if session[:user_id] %>
+    
+    <li><%= link_to "Create Test Case", new_test_case_path%></li>
     <li> <%= link_to "Sign out", user_path, :method => :delete %></li>
 <% end %>

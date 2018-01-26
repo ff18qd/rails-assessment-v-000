@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20180124021457) do
   create_table "test_case_test_steps", force: :cascade do |t|
     t.integer "test_case_id"
     t.integer "test_step_id"
+    t.integer "step"
   end
 
   create_table "test_cases", force: :cascade do |t|

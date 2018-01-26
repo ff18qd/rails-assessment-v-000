@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   
   resources :users
   
-  resources :test_cases, only: [:show, :edit, :update, :destroy]
+  resources :test_cases, :test_steps
+
   
   
   

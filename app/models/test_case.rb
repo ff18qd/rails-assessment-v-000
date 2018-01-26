@@ -3,4 +3,5 @@ class TestCase < ActiveRecord::Base
     has_many :test_case_test_steps
     has_many :test_steps, through: :test_case_test_steps
     
+    validates :title, length: { minimum: 8 }
 end
