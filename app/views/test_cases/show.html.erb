@@ -3,7 +3,7 @@
 <p>test step description</p>
 <ul class = 'sortable'>
    <% @steps.each do |step| %>
-      <li id="<%= step.sortable_id %>"><%= step %></li>
+      <li id="<%= step.sortable_id %>"><%= step.test_step.description %></li>
     <% end %>
   
  
