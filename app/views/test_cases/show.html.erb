@@ -1,6 +1,6 @@
 <h2>Title: <%= @test_case.title%></h2>
 
-<p>test step description</p>
+<p>Test Steps:</p>
 <ul class = 'sortable'>
    <% @steps.each do |step| %>
       <li id="<%= step.sortable_id %>"><%= step.test_step.description %></li>
@@ -10,5 +10,17 @@
 </ul>
       
 
-<%= link_to 'Create Test Step', new_test_step_path %>
-<p>Show available test steps</p>
+<%= link_to 'Create New Test Step', new_test_step_path %>
+<h3>Add test steps from available test steps</h3>
+<ul>
+   <% @all_test_steps.each do |ts| %>
+      <form action = '/test_case_test_steps', method = "post">
+          <li><%= ts.description %></li>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <input type="hidden" name="test_case_id" value="<%= @test_case.id %>">
+          <input type="hidden" name="test_step_id" value="<%= ts.id %>">
+          <%#= button_to 'Add to Test Case', test_case_test_steps_path %>
+          <input type='submit', value="Add to Test Case" />
+      </form>
+   <% end %>
+</ul>

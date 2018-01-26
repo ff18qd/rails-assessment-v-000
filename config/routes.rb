@@ -3,16 +3,19 @@ Rails.application.routes.draw do
 
   get 'test_step/index'
 
-   root 'welcome#home'
+  root 'welcome#home'
   
   get '/signup' => 'users#new'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/auth/facebook/callback' => 'sessions#create'
   
+  
   resources :users
   
   resources :test_cases, :test_steps
+  
+  resources :test_case_test_steps, only: [:create]
 
   
   
