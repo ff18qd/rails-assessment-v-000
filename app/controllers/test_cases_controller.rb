@@ -1,6 +1,9 @@
 class TestCasesController < ApplicationController
     def show
+        
         @test_case = TestCase.find(params[:id])
+        # binding.pry
+        @steps = @test_case.test_case_test_steps.order(:step)
     end 
     
     def new 

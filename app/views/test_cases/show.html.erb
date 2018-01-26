@@ -1,7 +1,14 @@
 <h2>Title: <%= @test_case.title%></h2>
 
-<p>Step #</p>
 <p>test step description</p>
+<ul class = 'sortable'>
+   <% @steps.each do |step| %>
+      <li id="<%= step.sortable_id %>"><%= step %></li>
+    <% end %>
+  
+ 
+</ul>
+      
 
 <%= link_to 'Create Test Step', new_test_step_path %>
 <p>Show available test steps</p>

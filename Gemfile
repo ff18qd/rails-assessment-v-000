@@ -32,6 +32,9 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
 
+gem 'jquery-ui-rails'
+gem 'rails_sortable'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
