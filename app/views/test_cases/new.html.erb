@@ -1,5 +1,15 @@
 <%= form_for @test_case do |f| %>
+  <%= f.label :title %>
   <%= f.text_field :title %>
-  <%#= f.text_area :content %>
+  <br>
+  Test Step:
+  <ul>
+    <%= f.fields_for :test_steps do |ts_form| %>
+      <li>
+        <%= ts_form.label :description %>
+        <%= ts_form.text_field :description %>
+      </li>
+    <% end %>
+  </ul>
   <%= f.submit %>
 <% end %>
