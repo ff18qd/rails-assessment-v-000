@@ -12,7 +12,12 @@ class TestStepsController < ApplicationController
   
   def create
     # binding.pry
-    @test_step = TestStep.new(description: params[:test_step][:description])
+    if !!TestStep.find_by(description: params[:test_step][:description])
+       @test_step = TestStep.find_by(description: params[:test_step][:description])
+    else 
+       @test_step = TestStep.new(description: params[:test_step][:description])
+    end 
+     
     if @test_step.save
       @test_case_id = params[:test_case_id].to_i
       TestCaseTestStep.create(test_case_id: @test_case_id, test_step_id: @test_step.id)
