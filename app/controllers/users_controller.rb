@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+    before_action :require_login, only: [:show]
+    
+    
     def new
     
     end 
@@ -15,10 +18,9 @@ class UsersController < ApplicationController
     end
     
     def show
-        @user = User.find(params[:id])
-        if session[:user_id] == params[:id]
-            @user = User.find(params[:id])
-        else 
+        @user = User.find_by(id: params[:id])
+        # binding.pry
+        if !@user || session[:user_id] != @user.id 
             redirect_to user_path(session[:user_id])
         end 
     end
@@ -36,6 +38,13 @@ class UsersController < ApplicationController
         params.require(:user).permit(:name, :password)
     end
  
+    def require_login
+        # !!session[:user_id]
+        unless logged_in?
+          flash[:error] = "You must be logged in to access this section"
+          redirect_to root_path # halts request cycle
+        end
+    end
     
     
 end

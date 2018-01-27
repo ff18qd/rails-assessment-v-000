@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/auth/facebook/callback' => 'sessions#create'
-  get 'users/:id/test_cases', to: 'test_cases#index'
-  get 'users/:id/test_cases/new', to: 'test_cases#new'
+  get 'users/:id/test_cases', to: 'test_cases#index', as: "user_test_cases"
+  get 'users/:user_id/test_cases/:test_case_id', to: 'test_cases#show'
   
   
   resources :users

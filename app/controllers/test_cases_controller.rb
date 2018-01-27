@@ -1,10 +1,21 @@
 class TestCasesController < ApplicationController
     def show
-        
-        @test_case = TestCase.find(params[:id])
-        @all_test_steps = TestStep.all
         # binding.pry
-        @steps = @test_case.test_case_test_steps.order(:step)
+        if params[:user_id]
+            # binding.pry
+            @user = User.find_by(id: params[:user_id])
+            @test_case = @user.test_cases.find_by(id: params[:test_case_id])
+            if @test_case == nil
+                redirect_to user_test_cases_path(@user), alert: "Test case not found"
+            else 
+                @all_test_steps = TestStep.all
+                @steps = @test_case.test_case_test_steps.order(:step)
+            end
+        else 
+            @test_case = TestCase.find(params[:id])
+            @all_test_steps = TestStep.all
+            @steps = @test_case.test_case_test_steps.order(:step)
+        end 
     end 
     
     def index
