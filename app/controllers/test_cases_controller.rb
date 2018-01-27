@@ -40,7 +40,9 @@ class TestCasesController < ApplicationController
         @test_case = TestCase.new(tc_params)
         @user = User.find(session[:user_id])
         if @test_case.save
+            # binding.pry
             @test_case.user = @user
+            @test_case.save
             redirect_to test_case_path(@test_case)
         else 
             redirect_to user_path(@user)
