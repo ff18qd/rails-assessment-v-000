@@ -17,3 +17,12 @@
     <li><%= link_to "Create Test Case", new_test_case_path%></li>
     <li> <%= link_to "Sign out", user_path, :method => :delete %></li>
 <% end %>
+
+<br>
+<div>
+    User with most test cases list:
+    <% @most.each do |u| %>
+        <ul><%= u.name %></ul>
+    <% end %>
+    
+</div>

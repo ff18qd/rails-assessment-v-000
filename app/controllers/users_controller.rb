@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     
     def show
         @user = User.find_by(id: params[:id])
+        @most = User.most_test_cases
         # binding.pry
         if !@user || session[:user_id] != @user.id 
             redirect_to user_path(session[:user_id])
