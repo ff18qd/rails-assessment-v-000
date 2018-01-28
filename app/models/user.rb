@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
     has_many :test_steps, through: :test_cases
     
     validates :name, presence: true
+    validates :name, length: { minimum: 2 }
     
        
     def self.most_test_cases
