@@ -28,13 +28,16 @@ class UsersController < ApplicationController
         end 
     end
     
-    def destroy
-      session.delete :user_id
-      redirect_to root_path
+    # def destroy
+    #   session.delete :user_id
+    #   redirect_to root_path
+    # end
+    
+    def most_test_cases
+       @most =  User.most_test_cases
     end
         
      
-   
     private
      
     def user_params

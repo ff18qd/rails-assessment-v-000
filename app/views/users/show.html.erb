@@ -15,7 +15,7 @@
 <% if session[:user_id] %>
     
     <li><%= link_to "Create Test Case", new_test_case_path%></li>
-    <li> <%= link_to "Sign out", user_path, :method => :delete %></li>
+    <li> <%= link_to "Sign out", logout_path, :method => :delete %></li>
 <% end %>
 
 <br>

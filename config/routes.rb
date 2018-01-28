@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   get '/users/:user_id/test_cases/:test_case_id', to: 'test_cases#show'
   get '/test_cases/:test_case_id/test_steps/new', to: 'test_steps#new', as: "new_test_step"
   post '/test_steps', to: 'test_steps#create'
-  
+  delete '/logout', to: "sessions#destroy"
+  get '/users/most_test_cases', to: "users#most_test_cases"
   
   resources :users
   
