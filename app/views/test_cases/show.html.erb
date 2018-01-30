@@ -16,6 +16,9 @@
 
 
 <h3>Add test steps from available test steps</h3>
+
+
+<%= collection_select(:test_case, :test_step_id, @all_test_steps, :id, :test_step_description) %>
 <ul>
    <% @all_test_steps.each do |ts| %>
       <form action = '/test_case_test_steps', method = "post">

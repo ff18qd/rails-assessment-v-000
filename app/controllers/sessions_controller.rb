@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
     def new
-        @user=User.new
+        # @user ||= User.new
+        @session = Session.new
     end 
     
     def create
@@ -14,15 +15,18 @@ class SessionsController < ApplicationController
             session[:user_id] = @user.id
             redirect_to user_path(@user)
         else 
-            @user = User.find_by(name: params[:user][:name])
+            @user = User.find_by(name: params[:session][:name])
             # binding.pry
-            if  !!@user && @user.authenticate(params[:user][:password])
+            if  !!@user && @user.authenticate(params[:session][:password])
               session[:user_id] = @user.id
               redirect_to user_path(@user)
             else 
             #   redirect_to '/login'
                 flash[:notice] = "Invalid user name and password. Please try again"
                 # binding.pry
+                @session=Session.new
+                @session.name = params[:session][:name]
+                @session.password = params[:session][:password]
                 render :new
             end
         end 
