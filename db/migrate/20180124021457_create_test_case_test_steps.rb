@@ -4,6 +4,7 @@ class CreateTestCaseTestSteps < ActiveRecord::Migration
       t.integer :test_case_id
       t.integer :test_step_id
       t.integer :step
+      t.string :note
     end
   end
 end

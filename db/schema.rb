@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20180124021457) do
     t.integer "test_case_id"
     t.integer "test_step_id"
     t.integer "step"
+    t.string  "note"
   end
 
   create_table "test_cases", force: :cascade do |t|
