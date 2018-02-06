@@ -3,20 +3,32 @@
 
 ## Overview Testing Management App
 The system has Users who can create Test Cases. Test Case belongs to a User, User has many test cases. Test case has many test steps, test steps has many test cases.
-Join tabel testcase_teststeps. User has many steps through test cases. 
+Join tabel test_case_test_steps. User has many test steps through test cases. 
 
 Nested form, user can create a new test step through new test case page. 
 
-Scope, most productive user who create the most test cases (> 10)
-
+Scope, most productive user who create the most test cases (> 5)
 
 
 Model: 
-User: name, password  cannot be null
-Test Case: title minimum length 8
+User: name, password  cannot be null, using bcrypt
+Test Case: title 
 Test Step: description 
 
+## Installation Guide
+Fork and clone from https://github.com/ff18qd/rails-assessment-v-000
+Run bundle install to install all the required gems for this project
+Run rake db:migrate to migrate the database
+Run rails server, open url and home page will show login and signup links 
 
+## Contributor Guide
+1. Open an issue in Github 
+Please refer to https://help.github.com/articles/opening-an-issue-from-code/
+2. Create a pull request 
+Please refer to https://help.github.com/articles/creating-a-pull-request/
+
+## License 
+This project has been licensed under Learn.co Educational Content License
 
 
 ## Overview
@@ -126,3 +138,4 @@ Project reviews are focused on preparing you for technical interviews. Treat pro
 
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/rails-assessment'>Rails Portfolio Project</a> on Learn.co and start learning to code for free.</p>
+
