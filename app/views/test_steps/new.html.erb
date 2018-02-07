@@ -1,16 +1,18 @@
 <h2>Create new test step</h2>
-<%#= form_for (@test_step, url: "/test_cases/#{@test_case_id}/test_steps", method: :post) do |f| %>
-      <li>
-        <%#= f.label :description %>
-        <%#= f.text_field :description %>
-      </li>
-      <%#= f.submit %>
-<%# end %>
 
-<form action = "/test_steps", method = "post">
-          <li>description</li>
-          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-          <input type="hidden" name="test_case_id" value="<%= @test_case_id %>">
-          <input type="text" name="test_step[description]"/>
-          <input type='submit', value="Create Test Step" />
-</form>
+<%= form_for @test_step do |f| %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.hidden_field :test_case_id, :value => @test_case_id %>
+  <br>
+  Test Step Note:
+  <ul>
+    <%= f.fields_for :test_case_test_steps do |ts_form| %>
+      <li>
+        <%= ts_form.label :note %>
+        <%= ts_form.text_field :note %>
+      </li>
+    <% end %>
+  </ul>
+  <%= f.submit %>
+<% end %>

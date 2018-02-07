@@ -19,8 +19,9 @@ class TestStepsController < ApplicationController
     end 
      
     if @test_step.save
-      @test_case_id = params[:test_case_id].to_i
-      TestCaseTestStep.create(test_case_id: @test_case_id, test_step_id: @test_step.id)
+      # @test_case_id = params[:test_case_id].to_i
+      @test_case_id = params[:test_step][:test_case_id].to_i
+      TestCaseTestStep.create(test_case_id: @test_case_id, test_step_id: @test_step.id, note: params[:test_step][:test_case_test_steps][:note])
       redirect_to test_case_path(@test_case_id)
     else
        redirect_to user_path(session[:user_id])
