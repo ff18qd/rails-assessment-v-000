@@ -16,6 +16,8 @@ class TestCasesController < ApplicationController
             @all_test_steps = TestStep.all
             @steps = @test_case.test_case_test_steps.order(:step)
         end 
+        
+        render json:  @test_case
     end 
     
     def index
@@ -25,6 +27,7 @@ class TestCasesController < ApplicationController
         else
           @test_cases = TestCase.all
         end
+        render json: @test_cases
     end 
     
     def new 
@@ -43,7 +46,8 @@ class TestCasesController < ApplicationController
             # binding.pry
             @test_case.user = @user
             @test_case.save
-            redirect_to test_case_path(@test_case)
+            # redirect_to test_case_path(@test_case)
+            render json: @test_case
         else 
             redirect_to user_path(@user)
         end 
