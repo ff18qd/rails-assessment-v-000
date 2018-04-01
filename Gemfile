@@ -35,6 +35,8 @@ gem 'dotenv-rails'
 gem 'jquery-ui-rails'
 gem 'rails_sortable'
 
+gem 'active_model_serializers', '0.10.6'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
