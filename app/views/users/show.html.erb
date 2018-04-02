@@ -1,14 +1,14 @@
 <h2>Welcome Back Tester <%= @user.name%></h2>
 
 <%#= list all the test cases that user created %>
-<% if @user.test_cases %>
-    <% @user.test_cases.each do |tc| %>
-        <li>Test Case: <%= link_to "#{tc.title}", test_case_path(tc)%></li>
-    <% end %>
+<%# if @user.test_cases %>
+    <%# @user.test_cases.each do |tc| %>
+        <%#li>Test Case: <%= link_to "#{tc.title}", test_case_path(tc)%><%#/li>
+    <%# end %>
 
-<% end %>
+<%# end %>
 
-<div id='testcases'></div>
+<a id='testcases' href='/users/<%= @user.id %>/test_cases'>Load Test Cases</a>
 
 
 <% if session[:user_id] %>
