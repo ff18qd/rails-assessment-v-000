@@ -1,6 +1,7 @@
-<h2>Title: <%= @test_case.title%></h2>
+<h2 class='title'>Title: <%= @test_case.title%></h2>
+<a href="#" class="js-next" data-id="<%=@test_case.id%>">Next Test Case</a>
 
-<p>Test Steps:</p>
+<p class="steps">Test Steps:</p>
 <ul class = 'sortable'>
    <% @steps.each do |step| %>
       <li id="<%= step.sortable_id %>"><%= step.test_step.description %> | Note:<%= step.note%></li>

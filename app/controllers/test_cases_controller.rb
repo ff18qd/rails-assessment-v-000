@@ -17,7 +17,7 @@ class TestCasesController < ApplicationController
             @steps = @test_case.test_case_test_steps.order(:step)
         end 
         
-        render json:  @test_case
+        # render json:  @test_case
     end 
     
     def index
