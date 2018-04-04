@@ -1,8 +1,4 @@
 <h2>Title: <%= @test_case.title%></h2>
-<div class='next_tc'></div>
-<button href="#" class="js-next" data-id="<%=@test_case.id%>">Next Test Case</button>
-
-
 
 <p class="steps">Test Steps:</p>
 <ul class = 'sortable'>
@@ -11,6 +7,8 @@
     <% end %>
 </ul>
       
+<div class='next_tc'></div>
+<button href="#" class="js-next" data-id="<%=@test_case.id%>">Next Test Case</button>
 
 <form action = '/test_cases/<%=@test_case.id %>/test_steps/new', method = "get">
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
