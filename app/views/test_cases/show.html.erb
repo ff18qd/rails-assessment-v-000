@@ -9,6 +9,26 @@
       
 <div class='next_tc'></div>
 <button href="#" class="js-next" data-id="<%=@test_case.id%>">Next Test Case</button>
+<br>
+<br>
+
+<%= form_for @test_step do |f| %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <input type="hidden" name="test_case_id" value="<%= @test_case.id %>">
+  <br>
+  Test Step Note:
+  <ul>
+    <%= f.fields_for :test_case_test_steps do |ts_form| %>
+      <li>
+        <%= ts_form.label :note %>
+        <%= ts_form.text_field :note %>
+      </li>
+    <% end %>
+  </ul>
+  <%= f.submit %>
+<% end %>
+
 
 <form action = '/test_cases/<%=@test_case.id %>/test_steps/new', method = "get">
       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>

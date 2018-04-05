@@ -5,6 +5,7 @@ class TestCasesController < ApplicationController
             # binding.pry
             @user = User.find_by(id: params[:user_id])
             @test_case = @user.test_cases.find_by(id: params[:test_case_id])
+            @test_step = TestStep.new
             if @test_case == nil
                 redirect_to user_test_cases_path(@user), alert: "Test case not found"
             else 
@@ -15,6 +16,7 @@ class TestCasesController < ApplicationController
             @test_case = TestCase.find(params[:id])
             @all_test_steps = TestStep.all
             @steps = @test_case.test_case_test_steps.order(:step)
+            @test_step = TestStep.new
         end 
         
         respond_to do |format|
