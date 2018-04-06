@@ -35,7 +35,8 @@ $(function() {
         data: values,
         success: function(resp) {
           // debugger
-          console.log(resp)
+          // console.log(resp.description);
+          $('ul.sortable').append(`<li>${resp.description}</li>`)
         }
         
       });
