@@ -34,6 +34,7 @@ $(function() {
         url: this.action,
         data: values,
         success: function(resp) {
+          // debugger
           console.log(resp)
         }
         

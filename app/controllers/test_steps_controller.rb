@@ -11,7 +11,7 @@ class TestStepsController < ApplicationController
   end 
   
   def create
-    binding.pry
+    # binding.pry
     if !!TestStep.find_by(description: params[:test_step][:description])
        @test_step = TestStep.find_by(description: params[:test_step][:description])
     else 
@@ -22,9 +22,10 @@ class TestStepsController < ApplicationController
       # binding.pry
       @test_case_id = params[:test_case_id].to_i
       # @test_case_id = params[:test_step][:test_case_id].to_i
-      TestCaseTestStep.create(test_case_id: @test_case_id, test_step_id: @test_step.id, note: params[:test_step][:test_case_test_steps][:note])
-      redirect_to test_case_path(@test_case_id)
-      # render :json 
+      @tcts = TestCaseTestStep.create(test_case_id: @test_case_id, test_step_id: @test_step.id, note: params[:test_step][:test_case_test_steps][:note])
+      # redirect_to test_case_path(@test_case_id)
+      
+      render json: @test_step
     else
        redirect_to user_path(session[:user_id])
     end 
