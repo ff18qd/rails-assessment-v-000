@@ -10,12 +10,17 @@ class TestStepsController < ApplicationController
  
   end 
   
+  def show 
+     @test_step = TestStep.find(params[:id])
+     render json: @test_step
+  end 
+  
   def create
     # binding.pry
     if !!TestStep.find_by(description: params[:test_step][:description])
        @test_step = TestStep.find_by(description: params[:test_step][:description])
     else 
-       @test_step = TestStep.new(description: params[:test_step][:description])
+      @test_step = TestStep.new(description: params[:test_step][:description])
     end 
      
     if @test_step.save

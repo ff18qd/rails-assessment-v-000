@@ -20,7 +20,6 @@ $(function() {
   $('form').submit(function(event) {
       //prevent form from submitting the default way
       event.preventDefault();
-      // alert("we r hack3rz");
       // debugger
       const values = $(this).serialize();
       // console.log(event.serializeArray());
@@ -36,7 +35,9 @@ $(function() {
         success: function(resp) {
           // debugger
           // console.log(resp.description);
-          $('ul.sortable').append(`<li>${resp.description}</li>`)
+          $("input#test_step_description").val('');
+          $("input#test_step_test_case_test_steps_note").val('');
+          $('ul.sortable').append(`<li id="TestCaseTestStep_${resp.test_case_test_steps[0].id}"  class = "ui-sortable-handle">${resp.description} | Note: ${resp.test_case_test_steps[0].note}</li>`)
         }
         
       });
