@@ -30,11 +30,11 @@
 <% end %>
 
 
-<form action = '/test_cases/<%=@test_case.id %>/test_steps/new', method = "get">
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-      <input type="hidden" name="test_case_id" value="<%= @test_case.id %>">
+<!---<form action = '/test_cases/<%#=@test_case.id %>/test_steps/new', method = "get">
+      <%#= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <input type="hidden" name="test_case_id" value="<%#= @test_case.id %>">
       <input type='submit', value="Create New Test Step" />
-</form>
+</form>--->
 
 
 <h3>Add test steps from available test steps</h3>
