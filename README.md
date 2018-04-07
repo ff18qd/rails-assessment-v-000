@@ -9,14 +9,24 @@ Nested form, user can create a new test step through new test case page.
 
 Scope, most productive user who create the most test cases (> 5)
 
-
 Model: 
 User: name, password  cannot be null, using bcrypt
 Test Case: title 
 Test Step: description 
 
+
+Rails and jQuery front end
+Based on the Rails project made changed by jQuery. 
+On User's show page, when clicking Load Test Cases link, it will loaded test cases which are created by the user.
+On Test Case show page, there is a button Next Test Case. When clicking Next Test Case button, it will render the next test case tilte and steps
+without a page reload.
+On Test Case show page, when user create a new test step and click the button Create Test Step, the newly created test step will append as the 
+last step of that test case.
+Test Step creation is by the form and submission is through ajax. Test Step appending is through JS model prototype function.
+
+
 ## Installation Guide
-Fork and clone from https://github.com/ff18qd/rails-assessment-v-000
+Fork and clone from https://github.com/ff18qd/rails-assessment-v-000, rails-js branch
 Run bundle install to install all the required gems for this project
 Run rake db:migrate to migrate the database
 Run rails server, open url and home page will show login and signup links 
