@@ -35,9 +35,15 @@ $(function() {
         success: function(resp) {
           // debugger
           // console.log(resp.description);
+          let newStep = new testStep(resp);
+          console.log(newStep);
           $("input#test_step_description").val('');
           $("input#test_step_test_case_test_steps_note").val('');
-          $('ul.sortable').append(`<li id="TestCaseTestStep_${resp.test_case_test_steps[0].id}"  class = "ui-sortable-handle">${resp.description} | Note: ${resp.test_case_test_steps[0].note}</li>`)
+          // $('ul.sortable').append(`<li id="TestCaseTestStep_${resp.test_case_test_steps[0].id}"  class = "ui-sortable-handle">${resp.description} | Note: ${resp.test_case_test_steps[0].note}</li>`)
+          let stepHtml = newStep.formatStep();
+          console.log(stepHtml);
+          $('ul.sortable').append(stepHtml);
+          
         }
         
       });
@@ -45,3 +51,16 @@ $(function() {
     });
   
 });
+
+
+function testStep (response) {
+  this.description = response.description;
+  this.test_case_test_steps_id = response.test_case_test_steps[0].id;
+  this.note = response.test_case_test_steps[0].note;
+}
+
+testStep.prototype.formatStep = function() {
+  let stepHtml = `<li id="TestCaseTestStep_${this.test_case_test_steps_id}" class = "ui-sortable-handle">${this.description} | Note: ${this.note}</li>`;
+  
+  return stepHtml;
+}
