@@ -5,6 +5,7 @@ $(function() {
     $.getJSON("/test_cases/" + nextId + ".json", function(data) {
       console.log(data.test_steps);
       $("div.next_tc").append(`<h2>Title: ${data.title}</h2><div id=${data.id}></div>`);
+      // $("div.next_tc").append(`<h2>Title: ${data.title}</h2><div id=${data.id}></div>`);
       if (data.test_steps) {
         data.test_steps.forEach(function(ele) {
           $(`div#${data.id}`).append(`<li>${ele.description}</li>`)
