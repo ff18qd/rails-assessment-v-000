@@ -1,5 +1,5 @@
 class TestCaseSerializer < ActiveModel::Serializer
-  attributes :id, :title
+  attributes :id, :title, :next
   
   has_many :test_steps
 end

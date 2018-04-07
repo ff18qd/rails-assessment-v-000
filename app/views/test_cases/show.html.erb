@@ -1,3 +1,4 @@
+<div id="container">
 <h2>Title: <%= @test_case.title%></h2>
 
 <p class="steps">Test Steps:</p>
@@ -6,16 +7,17 @@
       <li id="<%= step.sortable_id %>"><%= step.test_step.description %> | Note:<%= step.note%></li>
     <% end %>
 </ul>
+</div>      
       
 <div class='next_tc'></div>
-<button href="#" class="js-next" data-id="<%=@test_case.id%>">Next Test Case</button>
+<button href="#" class="js-next" data-id="<%=@test_case.next.id%>">Next Test Case</button>
 <br>
 <br>
 
 <%= form_for @test_step do |f| %>
   <%= f.label :description %>
   <%= f.text_field :description %>
-  <input type="hidden" name="test_case_id" value="<%= @test_case.id %>">
+  <input id="forminput" type="hidden" name="test_case_id" value="<%= @test_case.id %>">
   <br>
   Test Step Note:
   <ul>

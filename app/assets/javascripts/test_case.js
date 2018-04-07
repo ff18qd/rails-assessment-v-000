@@ -1,19 +1,25 @@
 $(function() {
   $(".js-next").on("click", function() {
-    var nextId = parseInt($(".js-next").attr("data-id")) + 1;
+    var nextId = parseInt($(".js-next").attr("data-id"));
     // console.log(nextId);
     $.getJSON("/test_cases/" + nextId + ".json", function(data) {
       console.log(data.test_steps);
-      $("div.next_tc").append(`<h2>Title: ${data.title}</h2><div id=${data.id}></div>`);
       // $("div.next_tc").append(`<h2>Title: ${data.title}</h2><div id=${data.id}></div>`);
+      var nextTC = (`<h2>Title: ${data.title}</h2><div id=${data.id}></div>`);
+      nextTC += `<ul class= 'sortable'>`;
       if (data.test_steps) {
         data.test_steps.forEach(function(ele) {
-          $(`div#${data.id}`).append(`<li>${ele.description}</li>`)
+          nextTC += `<li>${ele.description}</li>`;
           //console.log(ele.description);
         })
       }
+      nextTC += '</ul>';
+      var new_url="/test_cases/"+ nextId;
+      window.history.pushState("data","Title",new_url);
+      $('#forminput').val(`${nextId}`);
+      $(`div#container`).html(nextTC);
       // re-set the id to current on the link
-      $(".js-next").attr("data-id", data["id"]);
+      $(".js-next").attr("data-id", data["next"]["id"]);
     });
   });
   
@@ -23,11 +29,6 @@ $(function() {
       event.preventDefault();
       // debugger
       const values = $(this).serialize();
-      // console.log(event.serializeArray());
-      // const description = $(this).test_step_description.value;
-      // const url = $(this).action;
-      // const token = $(this).authenticity_token.value;
-      // const note = $(this).test_step_note.value;
       
       $.ajax({
         type: "POST",

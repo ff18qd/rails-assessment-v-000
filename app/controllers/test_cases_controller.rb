@@ -14,6 +14,7 @@ class TestCasesController < ApplicationController
             end
         else 
             @test_case = TestCase.find(params[:id])
+            # binding.pry
             @all_test_steps = TestStep.all
             @steps = @test_case.test_case_test_steps.order(:step)
             @test_step = TestStep.new
@@ -26,6 +27,8 @@ class TestCasesController < ApplicationController
         
         # render json:  @test_case
     end 
+
+
     
     def index
         # binding.pry

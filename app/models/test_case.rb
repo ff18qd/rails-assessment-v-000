@@ -17,4 +17,8 @@ class TestCase < ActiveRecord::Base
         end
     end
     
+    def next
+        TestCase.where("id > ?", self.id).first
+    end
+    
 end
