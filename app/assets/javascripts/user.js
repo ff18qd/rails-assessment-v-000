@@ -4,10 +4,15 @@ $(function() {
         // debugger
         console.log(this.href)
         $.get(this.href, function(resp) {
-        // console.log(resp);
-            resp.forEach(function(element) {
-                $("div#listtestcases").append(`<li>${element.title}</li>`);
-            })
+            // console.log(resp);
+            resp.filter(testCase => testCase.test_steps.length > 4)
+              .forEach(element => $("div#listtestcases").append(`<li>${element.title}</li>`))
+            
+            // resp.forEach(function(element) {
+                
+               
+            //     $("div#listtestcases").append(`<li>${element.title}</li>`);
+            // })
         })
        
         e.preventDefault();
@@ -15,3 +20,4 @@ $(function() {
     });
     
 })
+// words.filter(word => word.length > 6);

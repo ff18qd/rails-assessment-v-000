@@ -1,11 +1,11 @@
 $(function() {
   $(".js-next").on("click", function() {
-    var nextId = parseInt($(".js-next").attr("data-id"));
+    let nextId = parseInt($(".js-next").attr("data-id"));
     // console.log(nextId);
     $.getJSON("/test_cases/" + nextId + ".json", function(data) {
       console.log(data.test_steps);
       // $("div.next_tc").append(`<h2>Title: ${data.title}</h2><div id=${data.id}></div>`);
-      var nextTC = (`<h2>Title: ${data.title}</h2><div id=${data.id}></div>`);
+      let nextTC = (`<h2>Title: ${data.title}</h2><div id=${data.id}></div>`);
       nextTC += `<ul class= 'sortable'>`;
       if (data.test_steps) {
         data.test_steps.forEach(function(ele) {
@@ -14,8 +14,8 @@ $(function() {
         })
       }
       nextTC += '</ul>';
-      var new_url="/test_cases/"+ nextId;
-      window.history.pushState("data","Title",new_url);
+      let newUrl="/test_cases/"+ nextId;
+      window.history.pushState("data","Title",newUrl);
       $('#forminput').val(`${nextId}`);
       $(`div#container`).html(nextTC);
       // re-set the id to current on the link
@@ -57,12 +57,12 @@ $(function() {
 
 function testStep (response) {
   this.description = response.description;
-  this.test_case_test_steps_id = response.test_case_test_steps[0].id;
+  this.testCaseTestStepsId = response.test_case_test_steps[0].id;
   this.note = response.test_case_test_steps[0].note;
 }
 
 testStep.prototype.formatStep = function() {
-  let stepHtml = `<li id="TestCaseTestStep_${this.test_case_test_steps_id}" class = "ui-sortable-handle">${this.description} | Note: ${this.note}</li>`;
+  let stepHtml = `<li id="TestCaseTestStep_${this.testCaseTestStepsId}" class = "ui-sortable-handle">${this.description} | Note: ${this.note}</li>`;
   
   return stepHtml;
 }
